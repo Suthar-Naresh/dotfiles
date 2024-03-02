@@ -1,0 +1,7 @@
+dls
+dmenu
+dwm
+dwmblocks
+st
+themes
+

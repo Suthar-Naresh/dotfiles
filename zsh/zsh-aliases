@@ -1,0 +1,16 @@
+alias grep="grep --color=auto"
+alias egrep="egrep --color=auto"
+alias fgrep="fgrep --color=auto"
+
+alias ls="ls --color=auto"
+alias ll='ls -l --color=auto'
+alias la='ls -A --color=auto'
+alias lll='ls -lAtrh --color=auto'
+alias ld='ls -d --color=auto */'
+
+alias mz='mpv --no-video'
+alias vd='mpv --fs'
+
+alias music="shuf ~/audios/jlist | xargs -rd'\n' mpv --no-video"
+alias rmusik="shuf ~/audios/list | xargs -rd'\n' mpv --no-video"
+alias rnmux="shuf ~/audios/rnlist | xargs -rd'\n' mpv --no-video"

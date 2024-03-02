@@ -1,0 +1,5 @@
+1) st-alpha
+2) st-anysize
+3) st-scrollback-ringbuffer
+4) st-scrollback-mouse
+5) dwm-urg-border (?If required not necesary!)
