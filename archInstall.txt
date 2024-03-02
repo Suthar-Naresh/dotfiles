@@ -1,0 +1,53 @@
+===================================================
+= JUST FOLLOW ARCH WIKI ALONG WITH MY INSTRUCTION =
+===================================================
+
+0) Partitioning
+
++---------------+        +---------+------------+-----+---------+
+|       /       |        |  /boot  |  /SWAP[?]  |  /  |  /home  |
++---------------+        +---------+------------+-----+---------+
+(Legacy BIOS/MBR)                   (UEFI BIOS/GPT)
+
+If DUAL BOOT use cfdisk. And first windows then arch!
+If CLEAN install use fdisk.
+
+1) Before installing...
+If not follow then may be wastage NET! or need to re-install/re-download the packages :(
+Happened many times !!
+
+	1.1) Syncronize the time
+	timedatectl set-ntp true
+
+	1.2) Update the package db
+	pacman -Syyy
+
+	1.3) [*] Update arch-keyring and update package db
+	pacman -Sy
+	pacman -Syyy
+
+	1.4) Select the fastest servers
+	reflector -c India -p http -p https -a 12 -sort rate [ ef linux arch install for more info ]
+
+2) pacstrape:
+base linux linux-firmware
+
+3) chroot:
+networkmanager grub vim
+`systemctl enable NetworkManager`
+
+CREATE ROOT PASSWORD! --> archwiki
+
+4) after boot (root):
+base-devel man htop git wget neofetch fzf
+
+CREATE NORMAL USER ACCOUNT --> DISTROTUBE
+For Dual boot install the os-prober watch DT...
+
+5) after boot (USER):
+xorg-server xorg-xinit
+mesa xf86-intel/amd/vmware micro-code[?]
+xwallpaper picom mpv zathura zathura-pdf-poppler(?) sxiv youtube-dl/ytdlp python-pywal ffmpeg imagemagick
+nemo/pcmanfm/spacefm/thunar(for android transfer?) nvim(development IDE)
+simple-mtpfs/go-mtpfs(for media transfer protocol)[AUR]
+brave-bin(for internet access browser basically!)[AUR]

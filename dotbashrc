@@ -1,0 +1,43 @@
+#
+# ~/.bashrc
+#
+
+# If not running interactively, don't do anything
+[[ $- != *i* ]] && return
+
+# vim motions in bash
+set -o vi
+
+alias ls='ls --color=auto'
+alias grep='grep --color=always'
+alias ll='ls -l --color=auto'
+alias la='ls -A --color=auto'
+alias lll='ls -lAtrh --color=auto'
+alias ld='ls -d --color=auto */'
+alias lt='ls -1 --color=auto'
+alias mz='mpv --no-video'
+alias vd='mpv --fs'
+PS1='[\u@\h \W]\$ '
+
+# Android
+#export ANDROID=$HOME/AppDev/sdk
+#export PATH=$PATH:$ANDROID/cmdline-tools/latest
+#export PATH=$PATH:$ANDROID/cmdline-tools/latest/bin
+
+# Android SDK
+#export PATH=$PATH:$ANDROID/platform-tools
+#export ANDROID_SDK=$HOME/ANDROID
+#export PATH=$PATH:$ANDROID_SDK
+
+# Flutter
+#export FLUTTER=$HOME/AppDev/flutter
+#export PATH=$PATH:$FLUTTER/bin
+
+#alias music="xargs -rd'\n' mpv --no-video < ~/audios/list"
+#alias rmusic="shuf ~/audios/list | xargs -rd'\n' mpv --no-video"
+alias music="shuf ~/audios/jlist | xargs -rd'\n' mpv --no-video"
+alias rmusik="shuf ~/audios/list | xargs -rd'\n' mpv --no-video"
+alias rnmux="shuf ~/audios/rnlist | xargs -rd'\n' mpv --no-video"
+
+## My Scripts
+export PATH=$PATH:$HOME/scripts/useful

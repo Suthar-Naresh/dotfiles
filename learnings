@@ -1,0 +1,129 @@
+1) xargs 
+Used to pipe arguments to those commands which do not take file input arguments or which only take std input only!
+
+2) file <filename / * for complete directory> 
+Gives the file type and much more information about the particular file.
+
+3) sed 1,<X>d file.ext
+To remove lines during output. Delets 1 to X lines. Used during song download from downloadlist file with youtubedl.
+To delete only one line sed <Number>d file or piping.
+To delete range of lines sed <startline>,<endline>d file or piping.
+
+4) /etc/resolve.conf
+Whenever Name Resolution erro occur try chenging DNS.
+Change This file as sudo/root only!
+Add any nameserver 1.1.1.1 or 8.8.8.8 or any...
+ex: nameserver 8.8.8.8
+
+5) d0 : To remove anything before is used to remove spaces!
+
+6) cut -c<start>-<end>
+To select or print character. Selects character from start to end.
+
+7) awk 'NR==m, NR==n' < file
+Prints range of lines. Prints lines from line number m to n.
+
+8) Using USB:
+First mount the drive. Use `lsblk` to check if mounted.
+Can mount anywhere example: "/mnt/usb" (create directory usb if not exists)
+`mount /dev/usbpartition /mnt/usb`
+Unmount when done
+`umount /dev/usbpartition`
+
+9) awk -F 'SEPERATOR'
+Use -F then inside quotes the seperator if you want regex as seperator then use `awk -F '[REGEX]'`
+
+10) du -sh <directory/file>
+Gives the total size of the file or directory. More search size using du.
+
+11) xargs multi args for single command using file
+Assume we are giving all the args from 'file.txt' and command is `mz ar1 ar2 ar3 ..` and all the args are in file.txt as '\n' as delimiter in that case use delimiter in xargs and that will run as single command with multi args instead of command multiple time with single args i.e.
+
+`xargs -I{} COMMAND {} < file.txt`
+COMMAND line1
+COMMAND line2
+COMMAND line3 ...
+
+`xargs -rd'\n' COMMAND {} < file.txt`
+COMMAND line1 line2 line3 ...
+
+12) .gitkeep
+To keep track of empty directories in git. Use this to keep track of directories as well!
+
+13) AUR packages
+Git clone the required package then use the makepackage command it will download automatecally...
+`makepkg -si ` in the git directory where PKGBUILD file is present!
+
+14) sed -n <line number>p
+To print specific lines only use "-n"
+
+15) simple-mtpfs --> for android devices connected to machine
+To list all the available devices
+`simple-mtpfs -l`
+Select the device from the list and mount to directory
+`simple-mtpfs --device <number from list> <path to directory>`
+Unmounting mobile when done
+`fusermount -u <path to directory>`
+
+16) To see all wallpapers instead of manually checking:)
+Go to directory where all wallpapers are stored
+`for f in *; do xwallpaper --zoom wallhaven-zy8yyo.png; sleep 5; done;`
+`for file in *;do xwallpaper --zoom $file ;sleep 1;done`
+
+17) To list the absolute path or complete path of the directory files
+FIND COMMAND
+find <where to search/find> [options]{maxdepth should be first then type}
+
+If there are only files
+`find "$(pwd)"`
+
+If nested directories and files are present then only list files of current directories
+find "$(pwd)" -maxdepth 1 -type f --> search max depth to understand
+
+To list whole path of a file for some reason e.g. musik script !!
+find "$(pwd)" -type f | fzf >> somefile
+
+To list whole path of a file using name
+find "$(pwd)" -type f -name <name-of-file>
+
+18) Regex in vim!
+To use regex in vim it is simply vim's search command i.e. NORMAL_MODE `/`
+
+To make regex pattern visulize use `:set hlsearch`
+
+You might have to escape some character like \@
+
+Use NORMAL_MODE `/\v` before regex pattern it makes vim regex magic i.e. you can use standard regex else you have to escape { and [ and even ( !!!
+
+Use \zs to start highlight and \ze to end highlight.
+for example you want to highlight only second capturing group then...
+()\zs()\ze()  --> highlight only 2nd group
+
+Use <> in \v regex instead of \b => word boundries
+run this(below) and it will highlight e-to-e => ExamplE
+`/\v<e.*e>`
+
+19) grep only matched parts
+To show only matched part use -o flag
+To use real or extended regex use -E flag
+
+20) To list only the songs or audio files
+regex pattern : `[^/]+\.\w+`
+[^/]+ => Should not start with / more than 1 characters
+\.    => Followed by a dot
+\w+   => One or more words i.e. file extensions
+
+`find ~/audios -type f | grep -oE "[^/]+\.\w+"`
+
+21) Find complete or absolute path of a file using realpath
+To find the realpath or complete path of a file
+`realpath <file-name>`
+
+22) trim audio or extract between the timestamps using ffmpeg
+To trim between timestamps use -ss and -to
+`ffmpeg -i <input.audio> -ss 20 -to 40 -c copy <output.audio>`
+`ffmpeg -i <input.audio> -ss 00:00:20 -to 00:00:40 -c copy <output.audio>`
+
+OR if you want to trim for say k seconds from start use -ss and -t
+`ffmpeg -i <input> -ss 01:43:46 -t 00:00:44.30 <output>`
+this will trim from 01:43:46 to +44.30 seconds i.e. till 01:44:30.30
