@@ -1,0 +1,16 @@
+#!/bin/sh
+
+# Created by newuser for 5.9
+
+source "/home/arkuzi/.config/zsh/zshrc"
+
+# To set wrong command always red inspite of pywal color schemes
+# Apply changes only in GUI not in tty
+
+if [ "$TERM" != "linux" ]; then
+	typeset -A ZSH_HIGHLIGHT_STYLES
+	ZSH_HIGHLIGHT_STYLES[unknown-token]='fg=203'
+	ZSH_HIGHLIGHT_STYLES[command]='fg=119'
+	ZSH_HIGHLIGHT_STYLES[builtin]='fg=119'
+	ZSH_HIGHLIGHT_STYLES[alias]='fg=158'
+fi
